@@ -1,5 +1,8 @@
 # envx-gen-pro
 
+[![npm version](https://img.shields.io/npm/v/envx-gen-pro.svg)](https://www.npmjs.com/package/envx-gen-pro)
+[![npm downloads](https://img.shields.io/npm/dm/envx-gen-pro.svg)](https://www.npmjs.com/package/envx-gen-pro)
+
 Smart environment manager for Angular.  
 Create `environment.*.ts` files and automatically update `angular.json` or `.angular-cli.json` with safe defaults.
 
@@ -60,18 +63,21 @@ envx [command] [options]
 ### Commands
 
 #### `gen [name]`
+
 Create an environment file and update Angular config.
 
 - `name` is optional. If omitted, generates `environment.ts`
 - If provided, generates `environment.<name>.ts`
 
-**Default source when cloning**  
-- If `src/environments/environment.ts` exists, new files are cloned from it  
-- Else if `src/environments/environment.prod.ts` exists, clone from that  
+**Default source when cloning**
+
+- If `src/environments/environment.ts` exists, new files are cloned from it
+- Else if `src/environments/environment.prod.ts` exists, clone from that
 - Else a minimal boilerplate is created
 
-**Angular config update**  
-- For `angular.json` (Angular 6 and newer): adds or updates `projects.<project>.architect.build.configurations.<name>.fileReplacements`  
+**Angular config update**
+
+- For `angular.json` (Angular 6 and newer): adds or updates `projects.<project>.architect.build.configurations.<name>.fileReplacements`
 - For `.angular-cli.json` (Angular 5 and older): adds or updates the `apps[0].environments` map
 
 ---
@@ -159,7 +165,7 @@ Exports a plain `environment` object. If cloning, the entire source file content
 
 ```ts
 export const environment = {
-  production: false
+  production: false,
 };
 ```
 
@@ -233,8 +239,8 @@ For `.angular-cli.json` the `apps[0].environments` map gets a new key and path.
 
 ## Exit codes
 
-- `0` success  
-- `1` fatal error  
+- `0` success
+- `1` fatal error
 - `2` invalid input or conflicts without `--force`
 
 ---
@@ -257,8 +263,8 @@ For `.angular-cli.json` the `apps[0].environments` map gets a new key and path.
 
 ## Compatibility
 
-- Node 16 or newer  
-- Angular CLI 6 and newer for `angular.json`  
+- Node 16 or newer
+- Angular CLI 6 and newer for `angular.json`
 - Angular CLI 1.x or 5.x supported via `.angular-cli.json`
 
 ---
