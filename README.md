@@ -2,11 +2,38 @@
 
 [![npm version](https://img.shields.io/npm/v/envx-gen-pro.svg)](https://www.npmjs.com/package/envx-gen-pro)
 [![npm downloads](https://img.shields.io/npm/dm/envx-gen-pro.svg)](https://www.npmjs.com/package/envx-gen-pro)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/krankstter/envx-gen-pro.svg)](https://github.com/krankstter/envx-gen-pro/stargazers)
 
 Smart environment manager for Angular.  
-Create `environment.*.ts` files and automatically update `angular.json` or `.angular-cli.json` with safe defaults.
+Create `environment.*.ts` files and automatically update `angular.json` or `.angular-cli.json` with safe and predictable defaults.
 
-> Built for teams that do not want to hand edit fileReplacements every time a new environment appears.
+👉 **View on npm:** https://www.npmjs.com/package/envx-gen-pro
+
+**What it is**  
+`envx-gen-pro` is an **Angular environment file generator** CLI. It helps you create and manage `environment.ts`, `environment.prod.ts`, and custom files such as `environment.uat.ts` or `environment.sit.ts`. It also updates **angular.json** fileReplacements or the legacy **.angular-cli.json** environments map. Ideal for multi environment Angular apps, CI pipelines, and enterprise Angular projects that want a repeatable workflow.
+
+---
+
+## Table of contents
+
+- [Install](#install)
+- [Quick start](#quick-start)
+- [Why envx-gen-pro](#why-envx-gen-pro)
+- [Usage](#usage)
+  - [Commands](#commands)
+  - [Options](#options)
+- [Examples](#examples)
+- [What gets written](#what-gets-written)
+- [How angular.json is updated](#how-angularjson-is-updated)
+- [Use cases](#use-cases)
+- [Exit codes](#exit-codes)
+- [Troubleshooting](#troubleshooting)
+- [Compatibility](#compatibility)
+- [Uninstall](#uninstall)
+- [Contributing](#contributing)
+- [Related searches](#related-searches)
+- [License](#license)
 
 ---
 
@@ -16,18 +43,18 @@ Create `environment.*.ts` files and automatically update `angular.json` or `.ang
 # Recommended
 npm i -g envx-gen-pro
 
-# One-off usage without global install
-# npx will install the package then run the binary
+# One-off without global install
+# npx installs the package then runs the binary
 npx -p envx-gen-pro envx --help
 
 # pnpm users
 pnpm dlx envx-gen-pro envx --help
 
-# yarn (classic) users
+# yarn classic users
 yarn dlx envx-gen-pro envx --help
 ```
 
-**Requirements**: Node 16 or newer. Works with Angular projects that use `angular.json`. Also supports older `.angular-cli.json` files.
+**Requirements**: Node 16 or newer. Works with Angular projects that use `angular.json`. Also supports older `.angular-cli.json` projects.
 
 ---
 
@@ -48,9 +75,11 @@ envx gen prod
 
 ## Why envx-gen-pro
 
-- Stop copy pasting environment files and editing JSON by hand
+- No more manual JSON edits for fileReplacements
 - Reuse an existing environment as a template
-- Keep a predictable structure that works across teams and CI
+- Consistent structure across teams and CI
+- Works with modern Angular CLI and legacy `.angular-cli.json`
+- Safe by default, refuses to overwrite unless you ask for it
 
 ---
 
@@ -77,8 +106,8 @@ Create an environment file and update Angular config.
 
 **Angular config update**
 
-- For `angular.json` (Angular 6 and newer): adds or updates `projects.<project>.architect.build.configurations.<name>.fileReplacements`
-- For `.angular-cli.json` (Angular 5 and older): adds or updates the `apps[0].environments` map
+- For `angular.json` Angular 6 and newer, updates `projects.<project>.architect.build.configurations.<name>.fileReplacements`
+- For `.angular-cli.json` Angular 5 and older, updates `apps[0].environments` map
 
 ---
 
@@ -165,7 +194,7 @@ Exports a plain `environment` object. If cloning, the entire source file content
 
 ```ts
 export const environment = {
-  production: false,
+  production: false
 };
 ```
 
@@ -237,6 +266,16 @@ For `.angular-cli.json` the `apps[0].environments` map gets a new key and path.
 
 ---
 
+## Use cases
+
+- Generate Angular `environment.ts` and `environment.prod.ts`
+- Create custom environments like `environment.uat.ts`, `environment.sit.ts`, `environment.qa.ts`
+- Automate `angular.json` fileReplacements
+- Support for Angular workspaces and monorepos
+- Useful for CI or CD pipelines that create build specific environment files
+
+---
+
 ## Exit codes
 
 - `0` success
@@ -248,13 +287,13 @@ For `.angular-cli.json` the `apps[0].environments` map gets a new key and path.
 ## Troubleshooting
 
 - Target file already exists and you did not pass `--force`  
-  The command will refuse to overwrite. Rerun with `--force` if you are sure.
+  The command refuses to overwrite. Rerun with `--force` if you are sure.
 
 - Project could not be resolved  
   Use `--project <name>` or set `defaultProject` in `angular.json`.
 
-- Using very old Angular without `angular.json`  
-  Pass `--angular-json .angular-cli.json`. The tool will update the `environments` section.
+- Using a very old Angular project without `angular.json`  
+  Pass `--angular-json .angular-cli.json`. The tool updates the `environments` section.
 
 - Windows shebang issues  
   npm creates platform shims for the binary, so it works across OS by default.
@@ -279,7 +318,13 @@ npm uninstall -g envx-gen-pro
 
 ## Contributing
 
-Issues and PRs are welcome. Please include a failing case or a before and after snippet so it is easy to reproduce.
+Issues and PRs are welcome. Please include a failing case or a before and after snippet that makes it easy to reproduce.
+
+---
+
+## Related searches
+
+angular environment generator, angular.json fileReplacements automation, angular multiple environment files, angular CLI environment management, environment.ts vs environment.prod.ts, angular environments cli, angular config environments, angular create environment file, angular workspace environments
 
 ---
 
