@@ -27,13 +27,13 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/you/envx-gen-pro.git",
+    "url": "git+https://github.com/krankstter/envx-gen-pro.git",
     "directory": "packages/envx-gen-pro"
   },
   "bugs": {
-    "url": "https://github.com/you/envx-gen-pro/issues"
+    "url": "https://github.com/krankstter/envx-gen-pro/issues"
   },
-  "homepage": "https://github.com/you/envx-gen-pro#readme",
+  "homepage": "https://github.com/krankstter/envx-gen-pro#readme",
   "engines": {
     "node": ">=16"
   },
