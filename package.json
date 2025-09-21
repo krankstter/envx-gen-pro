@@ -1,0 +1,53 @@
+{
+  "name": "envx-gen-pro",
+  "version": "1.0.1",
+  "description": "Smart environment manager for Angular: generate environment files and auto-update angular.json / .angular-cli.json",
+  "bin": {
+    "envx": "dist/index.js"
+  },
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "postbuild": "node -e \"try{require('fs').chmodSync('dist/index.js',0o755)}catch(e){}\"",
+    "dev": "ts-node src/index.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "angular",
+    "cli",
+    "env",
+    "dotenv",
+    "angular.json",
+    "angular-cli"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/you/envx-gen-pro.git",
+    "directory": "packages/envx-gen-pro"
+  },
+  "bugs": {
+    "url": "https://github.com/you/envx-gen-pro/issues"
+  },
+  "homepage": "https://github.com/you/envx-gen-pro#readme",
+  "engines": {
+    "node": ">=16"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^24.5.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^11.1.0",
+    "dotenv": "^17.2.2",
+    "fs-extra": "^11.3.2",
+    "semver": "^7.7.2"
+  }
+}
